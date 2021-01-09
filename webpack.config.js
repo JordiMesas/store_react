@@ -4,12 +4,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-	entry: './src/index.js',
-	mode: 'production',
+	mode: 'development',
+	entry: 	{
+		home: path.resolve(__dirname, "src/index.js"),
+	},	
+	
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
-	},
+	},	
 	devServer: {
 		//activamos el metodo HotModuleReplacementPlugin() de webpack
 		hot: true,
@@ -27,33 +30,32 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 				},
-			},
-			{
-				test: /\.html$/,
-				use: [
-					{
-						loader: 'html-loader',
-					},
-				],
-			},
+			},		
 			{
 				test: /\.css$/,
 				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
-					},
+					
+					'style-loader',
 					'css-loader'
 				]
 			},
 			{
 				test: /\.scss$/,
 				use: [
-				  {
-					loader: MiniCssExtractPlugin.loader,
-				  },
+				  
+				  'style-loader',
 				  "css-loader",
 				  "sass-loader",
 				],
+			},
+			{
+				test: /\.jpg|png|gif|woff|eot|ttf|svg|mp4|webm$/,
+				use: {
+					loader: 'url-loader',
+					options:{
+						limit: 90000,
+					}
+				}				
 			},
 		],
 	},
@@ -67,5 +69,6 @@ module.exports = {
 			filename: 'assets/[name].css',
 		})
 	],	
+	
 	
 };
