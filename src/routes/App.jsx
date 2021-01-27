@@ -12,7 +12,7 @@ import Layout from '../components/Layout';
 const App = () => {
 	return (
 		<BrowserRouter>
-			<Layout>  
+			<Layout>
 				{/*Encuentra el path y lo empuja según la ruta puesta. Switch es el children que le estamos pasando a components/Layout.jsx*/}
 				<Switch>
 					<Route exact path='/' component={Home} />
