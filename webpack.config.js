@@ -12,11 +12,13 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
+		publicPath: '/'
 	},	
 	devServer: {
 		//activamos el metodo HotModuleReplacementPlugin() de webpack
 		hot: true,
 		open: true,
+		historyApiFallback: true,
 		port: 3005,
 	},
 	resolve: {

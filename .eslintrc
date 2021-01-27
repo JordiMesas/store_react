@@ -1,12 +1,15 @@
 {
     "extends": [
       "airbnb",
-      "prettier"
+      "prettier"     
     ],
     "plugins": [
-      "prettier"
+      "prettier",
+      "react"
     ],
     "rules": {
+      "react/jsx-indent": "off",
+      "arrow-body-style": ["error", "always"],      
       "react/jsx-filename-extension": [
         1,
         {
