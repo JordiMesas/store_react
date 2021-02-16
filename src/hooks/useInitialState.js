@@ -18,9 +18,33 @@ const useInitialState = () => {
 		});
 	};
 
+	const addToBuyer = payload =>{
+		setState({
+			...state,
+			buyer: [...state.buyer, payload]
+		})
+	}
+
+	const handleSumTotal = (cart) => {
+		const reducer = (accumulator, currentValue) =>
+			accumulator + currentValue.price;
+		const sum = cart.reduce(reducer, 0);
+		return sum;
+	};
+
+	const addNewOrder = payload => {
+		setState({
+			...state,
+			orders: [...state.orders, payload]
+		})
+	}
+
 	return {
 		addToCart,
 		removeFromCart,
+		addToBuyer,
+		handleSumTotal,
+		addNewOrder,
 		state,
 	};
 };
